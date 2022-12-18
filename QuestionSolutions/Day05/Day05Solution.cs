@@ -1,4 +1,6 @@
-﻿namespace QuestionSolutions.Day05;
+﻿using QuestionSolutions.Day05.CrateMovers;
+
+namespace QuestionSolutions.Day05;
 
 public class Day05Solution
 {
@@ -14,6 +16,13 @@ public class Day05Solution
     public string PerformWorkWithCrateMover9000()
     {
         var crateMover9000 = new CrateMover9000(_stacks, _input);
+        crateMover9000.Work();
+        return new string(_stacks.Select(x => x.TryPeek(out var val) ? val : ' ').ToArray());
+    }
+
+    public string PerformWorkWithCrateMover9001()
+    {
+        var crateMover9000 = new CrateMover9001(_stacks, _input);
         crateMover9000.Work();
         return new string(_stacks.Select(x => x.TryPeek(out var val) ? val : ' ').ToArray());
     }

@@ -1,6 +1,6 @@
 ﻿namespace QuestionSolutions.Day05;
 
-public class Day05Tests
+public class CrateMover9000Tests
 {
     [Fact]
     public async Task Question1()

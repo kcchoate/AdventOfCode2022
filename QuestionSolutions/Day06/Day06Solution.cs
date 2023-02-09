@@ -9,7 +9,7 @@ public class Day06Solution
     private int FindStartOfDistinctChars(string input, int requiredLength)
     {
         var result = requiredLength;
-        while (IsCharacterShared(input.Skip(result - requiredLength).Take(requiredLength).ToArray() ))
+        while (IsCharacterShared(input.Skip(result - requiredLength).Take(requiredLength).ToArray()))
         {
             result++;
         }

@@ -9,12 +9,17 @@ public class Day06Solution
     private int FindStartOfDistinctChars(string input, int requiredLength)
     {
         var result = requiredLength;
-        while (IsCharacterShared(input.Skip(result - requiredLength).Take(requiredLength).ToArray()))
-        {
-            result++;
-        }
 
-        return result;
+        while (true)
+        {
+            var listOfChars = input.Skip(result - requiredLength).Take(requiredLength).ToArray();
+            if (!IsCharacterShared(listOfChars))
+            {
+                return result;
+            }
+
+            result += FindIndexOfFirstSharedChar(listOfChars) + 1;
+        }
     }
 
     private bool IsCharacterShared(params char[] values)
@@ -22,5 +27,22 @@ public class Day06Solution
         var set = new HashSet<char>(values);
 
         return set.Count != values.Length;
+    }
+
+    private int FindIndexOfFirstSharedChar(char[] values)
+    {
+        var lookup = new Dictionary<char, int>();
+        for (var i = 0; i < values.Length; i++)
+        {
+            var value = values[i];
+            if (lookup.TryGetValue(value, out var idx))
+            {
+                return idx;
+            }
+
+            lookup[value] = i;
+        }
+
+        return values.Length - 1;
     }
 }

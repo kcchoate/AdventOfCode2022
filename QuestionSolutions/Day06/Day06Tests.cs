@@ -31,4 +31,19 @@ public class Day06Tests
         // Assert
         result.Should().Be(1965);
     }
+
+    [Theory]
+    [InlineData("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 19)]
+    [InlineData("bvwbjplbgvbhsrlpgdmjqwftvncz", 23)]
+    [InlineData("nppdvjthqldpwncqszvftbrmjlhg", 23)]
+    [InlineData("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 29)]
+    [InlineData("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 26)]
+    public void FindStartOfMessageMarker_GivenBasicInput_ReturnsCorrectMarker(string input, int expected)
+    {
+        // Act
+        var result = _sut.FindStartOfMessageMarker(input);
+
+        // Assert
+        result.Should().Be(expected);
+    }
 }

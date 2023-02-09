@@ -22,16 +22,21 @@ public class Day06Solution
         return result;
     }
 
-    private bool IsCharacterShared(char first, char second, char third, char fourth)
+    public int FindStartOfMessageMarker(string input)
     {
-        var set = new HashSet<char>
+        var result = 14;
+        while (IsCharacterShared(input.Skip(result - 14).Take(14).ToArray() ))
         {
-            first,
-            second,
-            third,
-            fourth
-        };
+            result++;
+        }
 
-        return set.Count != 4;
+        return result;
+    }
+
+    private bool IsCharacterShared(params char[] values)
+    {
+        var set = new HashSet<char>(values);
+
+        return set.Count != values.Length;
     }
 }

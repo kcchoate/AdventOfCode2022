@@ -46,4 +46,18 @@ public class Day06Tests
         // Assert
         result.Should().Be(expected);
     }
+
+    [Fact]
+    public async Task PartTwoSolution()
+    {
+        // Arrange
+        var fileContent = await File.ReadAllTextAsync(Path.Combine("Day06", "input.txt"));
+
+        // Act
+        var result = _sut.FindStartOfMessageMarker(fileContent);
+
+        // Assert
+        result.Should().Be(2773);
+    }
+
 }

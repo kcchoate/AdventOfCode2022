@@ -168,4 +168,144 @@ public class RangeExtensionTests
         // Assert
         result.Should().BeFalse();
     }
+
+    [Fact]
+    public void Overlaps_WhenInputRangeStartsBeforeRange_AndInputEndEqualsRangeStart_ReturnsTrue()
+    {
+        // Arrange
+        var input = 1..2;
+        var range = 2..5;
+
+        // Act
+        var result = range.Overlaps(input);
+
+        // Assert
+        result.Should().BeTrue();
+    }
+
+    [Fact]
+    public void Overlaps_WhenInputRangeStartsBeforeRange_AndInputEndIsWithinRange_ReturnsTrue()
+    {
+        // Arrange
+        var input = 1..3;
+        var range = 2..5;
+
+        // Act
+        var result = range.Overlaps(input);
+
+        // Assert
+        result.Should().BeTrue();
+    }
+
+    [Fact]
+    public void Overlaps_WhenInputStartEqualsRangStart_AndInputEndIsWithinRange_ReturnsTrue()
+    {
+        // Arrange
+        var input = 2..3;
+        var range = 2..5;
+
+        // Act
+        var result = range.Overlaps(input);
+
+        // Assert
+        result.Should().BeTrue();
+    }
+
+    [Fact]
+    public void Overlaps_WhenInputRangeEqualsRange_ReturnsTrue()
+    {
+        // Arrange
+        var input = 2..5;
+        var range = 2..5;
+
+        // Act
+        var result = range.Overlaps(input);
+
+        // Assert
+        result.Should().BeTrue();
+    }
+
+    [Fact]
+    public void Overlaps_WhenInputRangeStartsInsideRange_AndInputRangeEndsOnRangeEnd_ReturnsTrue()
+    {
+        // Arrange
+        var input = 3..5;
+        var range = 2..5;
+
+        // Act
+        var result = range.Overlaps(input);
+
+        // Assert
+        result.Should().BeTrue();
+    }
+
+    [Fact]
+    public void Overlaps_WhenInputRangeIsEntireWithinRange_ReturnsTrue()
+    {
+        // Arrange
+        var input = 3..4;
+        var range = 2..5;
+
+        // Act
+        var result = range.Overlaps(input);
+
+        // Assert
+        result.Should().BeTrue();
+    }
+
+    [Fact]
+    public void Overlaps_WhenInputRangeStartsWithinRange_AndEndsOutsideOfRange_ReturnsTrue()
+    {
+        // Arrange
+        var input = 3..6;
+        var range = 2..5;
+
+        // Act
+        var result = range.Overlaps(input);
+
+        // Assert
+        result.Should().BeTrue();
+    }
+
+    [Fact]
+    public void Overlaps_WhenInputRangeStartsAtEndOfRange_ReturnsTrue()
+    {
+        // Arrange
+        var input = 5..6;
+        var range = 2..5;
+
+        // Act
+        var result = range.Overlaps(input);
+
+        // Assert
+        result.Should().BeTrue();
+    }
+
+    [Fact]
+    public void Overlaps_WhenInputRangeIsEntireBeforeRange_ReturnsFalse()
+    {
+        // Arrange
+        var input = 0..1;
+        var range = 2..5;
+
+        // Act
+        var result = range.Overlaps(input);
+
+        // Assert
+        result.Should().BeFalse();
+    }
+
+    [Fact]
+    public void Overlaps_WhenInputRangeIsEntireAfterRange_ReturnsFalse()
+    {
+        // Arrange
+        var input = 6..7;
+        var range = 2..5;
+
+        // Act
+        var result = range.Overlaps(input);
+
+        // Assert
+        result.Should().BeFalse();
+    }
 }

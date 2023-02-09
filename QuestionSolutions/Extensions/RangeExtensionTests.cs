@@ -8,6 +8,7 @@ public class RangeExtensionTests
         // Arrange
         const int input = 2;
         var range = 1..3;
+
         // Act
         var result = range.Contains(input);
 
@@ -21,6 +22,7 @@ public class RangeExtensionTests
         // Arrange
         const int input = 1;
         var range = 1..3;
+
         // Act
         var result = range.Contains(input);
 
@@ -34,6 +36,7 @@ public class RangeExtensionTests
         // Arrange
         const int input = 3;
         var range = 1..3;
+
         // Act
         var result = range.Contains(input);
 
@@ -47,6 +50,7 @@ public class RangeExtensionTests
         // Arrange
         const int input = 0;
         var range = 1..3;
+
         // Act
         var result = range.Contains(input);
 

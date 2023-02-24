@@ -1,6 +1,6 @@
 namespace QuestionSolutions.Day07;
 
-public abstract class Item
+public abstract record Item
 {
     public string Name { get; init; }
 

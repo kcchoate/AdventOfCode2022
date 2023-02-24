@@ -1,6 +1,6 @@
 namespace QuestionSolutions.Day07;
 
-public class Directory : Item
+public record Directory : Item
 {
     public List<Item> SubItems { get; } = new();
     public Directory? ParentDirectory { get; set; }
@@ -11,6 +11,15 @@ public class Directory : Item
     }
 
     public override int GetSize() => SubItems.Sum(x => x.GetSize());
+    public IEnumerable<Directory> GetSubDirectories() => SubItems.OfType<Directory>();
+    public Directory GetSubDirectory(string name) => GetSubDirectories().First(x => x.Name == name);
 
-    public Directory GetSubDirectory(string name) => SubItems.OfType<Directory>().First(x => x.Name == name);
+    public IEnumerable<Directory> GetAllDirectories()
+    {
+        yield return this;
+        foreach (var subDirectory in GetSubDirectories().SelectMany(x => x.GetAllDirectories()))
+        {
+            yield return subDirectory;
+        }
+    }
 }

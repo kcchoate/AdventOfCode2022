@@ -1,6 +1,6 @@
 namespace QuestionSolutions.Day07;
 
-public class File : Item
+public record File : Item
 {
     private readonly int _size;
 

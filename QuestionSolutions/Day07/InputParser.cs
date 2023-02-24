@@ -16,7 +16,7 @@ public class InputParser
 
     public Directory ParseLines()
     {
-        var lineParts = _lines.Split("\r\n").Skip(1);
+        var lineParts = (_lines.Contains('\r') ? _lines.Split("\r\n") : _lines.Split("\n")).Skip(1);
 
         foreach (var line in lineParts)
         {

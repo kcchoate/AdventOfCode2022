@@ -98,4 +98,32 @@ public class Day07Tests
         // Assert
         actual.Should().Be(48381165);
     }
+
+    [Fact]
+    public async Task Problem01SolutionTest()
+    {
+        // Arrange
+        var fileContent = await System.IO.File.ReadAllTextAsync(Path.Combine("Day07", "input.txt"));
+
+        // Act
+        var sut = new Day07Solution(fileContent);
+        var actual = sut.Problem01Solution();
+
+        // Assert
+        actual.Should().Be(1118405);
+    }
+
+    [Fact]
+    public async Task Problem02SolutionTest()
+    {
+        // Arrange
+        var fileContent = await System.IO.File.ReadAllTextAsync(Path.Combine("Day07", "input.txt"));
+
+        // Act
+        var sut = new Day07Solution(fileContent);
+        var actual = sut.Problem02Solution();
+
+        // Assert
+        actual.Should().Be(12545514);
+    }
 }

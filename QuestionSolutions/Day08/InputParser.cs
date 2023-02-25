@@ -38,12 +38,6 @@ public class InputParser
 
     private static void CalculateTreeProperties(Tree tree, Tree[,] forest)
     {
-        if (tree.X == 0 || tree.Y == 0 || tree.X == forest.GetLength(0) - 1 || tree.Y == forest.GetLength(1) - 1)
-        {
-            tree.IsVisible = true;
-            return;
-        }
-
         var isVisibleFromLeft = true;
         var isVisibleFromRight = true;
         var isVisibleFromTop = true;

@@ -43,42 +43,61 @@ public class InputParser
         var isVisibleFromTop = true;
         var isVisibleFromBottom = true;
 
+        var scenicLeft = 0;
+        var scenicRight = 0;
+        var scenicUp = 0;
+        var scenicDown = 0;
+
         for (var rowIndex = tree.X - 1; rowIndex >= 0; rowIndex--)
         {
+            scenicLeft++;
+
             var rowNeighbor = forest[rowIndex, tree.Y];
             if (rowNeighbor.Height >= tree.Height)
             {
                 isVisibleFromLeft = false;
+                break;
             }
         }
 
         for (var rowIndex = tree.X + 1; rowIndex < forest.GetLength(0); rowIndex++)
         {
+            scenicRight++;
+
             var rowNeighbor = forest[rowIndex, tree.Y];
             if (rowNeighbor.Height >= tree.Height)
             {
                 isVisibleFromRight = false;
+                break;
             }
+
         }
 
         for (var columnIndex = tree.Y - 1; columnIndex >= 0; columnIndex--)
         {
+            scenicUp++;
+
             var columnNeighbor = forest[tree.X, columnIndex];
             if (columnNeighbor.Height >= tree.Height)
             {
                 isVisibleFromTop = false;
+                break;
             }
         }
 
         for (var columnIndex = tree.Y + 1; columnIndex < forest.GetLength(1); columnIndex++)
         {
+            scenicDown++;
+
             var columnNeighbor = forest[tree.X, columnIndex];
             if (columnNeighbor.Height >= tree.Height)
             {
                 isVisibleFromBottom = false;
+                break;
             }
         }
 
         tree.IsVisible = isVisibleFromLeft || isVisibleFromRight || isVisibleFromTop || isVisibleFromBottom;
+        tree.ScenicScore = scenicLeft * scenicRight * scenicUp * scenicDown;
     }
 }

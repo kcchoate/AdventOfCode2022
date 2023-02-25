@@ -43,6 +43,28 @@ public class Day08Tests
     }
 
     [Fact]
+    public void GivenComplexInput_ReturnsHighestScenicScore()
+    {
+
+        // Arrange
+        const string input = """
+                             30373
+                             25512
+                             65332
+                             33549
+                             35390
+                             """;
+
+        var sut = new Day08Solution(input);
+
+        // Act
+        var actual = sut.GetHighestScenicScore();
+
+        // Assert
+        actual.Should().Be(8);
+    }
+
+    [Fact]
     public async Task Problem01()
     {
         // Arrange
@@ -54,5 +76,19 @@ public class Day08Tests
 
         // Assert
         actual.Should().Be(1851);
+    }
+
+    [Fact]
+    public async Task Problem02()
+    {
+        // Arrange
+        var fileContent = await File.ReadAllTextAsync(Path.Combine("Day08", "input.txt"));
+
+        // Act
+        var sut = new Day08Solution(fileContent);
+        var actual = sut.GetHighestScenicScore();
+
+        // Assert
+        actual.Should().Be(574080);
     }
 }

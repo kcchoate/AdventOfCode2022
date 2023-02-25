@@ -49,7 +49,7 @@ public class InputParser
         var isVisibleFromTop = true;
         var isVisibleFromBottom = true;
 
-        for (var rowIndex = 0; rowIndex < tree.X; rowIndex++)
+        for (var rowIndex = tree.X - 1; rowIndex >= 0; rowIndex--)
         {
             var rowNeighbor = forest[rowIndex, tree.Y];
             if (rowNeighbor.Height >= tree.Height)
@@ -58,7 +58,7 @@ public class InputParser
             }
         }
 
-        for (var rowIndex = forest.GetLength(0) -1; rowIndex > tree.X; rowIndex--)
+        for (var rowIndex = tree.X + 1; rowIndex < forest.GetLength(0); rowIndex++)
         {
             var rowNeighbor = forest[rowIndex, tree.Y];
             if (rowNeighbor.Height >= tree.Height)
@@ -67,7 +67,7 @@ public class InputParser
             }
         }
 
-        for (var columnIndex = 0; columnIndex < tree.Y; columnIndex++)
+        for (var columnIndex = tree.Y - 1; columnIndex >= 0; columnIndex--)
         {
             var columnNeighbor = forest[tree.X, columnIndex];
             if (columnNeighbor.Height >= tree.Height)
@@ -76,7 +76,7 @@ public class InputParser
             }
         }
 
-        for (var columnIndex = forest.GetLength(1) - 1; columnIndex > tree.Y; columnIndex--)
+        for (var columnIndex = tree.Y + 1; columnIndex < forest.GetLength(1); columnIndex++)
         {
             var columnNeighbor = forest[tree.X, columnIndex];
             if (columnNeighbor.Height >= tree.Height)
